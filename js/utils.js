@@ -1,36 +1,30 @@
-export const fetchAPI = async (uri, method, data) => {
-    if (uri && method && data) {
-        let dataResponse;
+/**
+ * Realiza peticiones HTTP a una API
+ * @param {string} uri - URL del endpoint
+ * @param {string} method - Método HTTP (GET, POST, PUT, etc.)
+ * @param {Object} data - Datos a enviar en el body (opcional)
+ * @returns {Promise<Object>} Respuesta en formato JSON
+ */
+export const fetchAPI = async (uri, method = 'GET', data = null) => {
+    const options = {
+        method,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
 
-        switch (uri) {
-            case uri == "POST":
-                const postResponse = await fetch(
-                    uri,
-                    method,
-                    data,
-                );
-
-                dataResponse = await postResponse.json();
-                break;
-            case uri = "PUT":
-                const putResponse = await fetch(
-                    uri,
-                    method,
-                    data,
-                );
-
-                dataResponse = await putResponse.json();
-        }
-
-        return dataResponse;
-    } else if (uri & !method & !data) {
-        const response = await fetch(
-            uri,
-            method,
-            data,
-        );
-
-        const data = await response.json();
-        return data
+    if (data && (method === 'POST' || method === 'PUT')) {
+        options.body = JSON.stringify(data);
     }
-}
+
+    const response = await fetch(uri, options);
+
+    if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`);
+    }
+
+    const jsonData = await response.json();
+    // console.log(jsonData);
+
+    return jsonData;
+};
