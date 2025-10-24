@@ -1,6 +1,10 @@
 import { getProducts } from "./js/products.js";
-import { getUniqueCategories, renderCategorySections, organizeAndRenderProducts } from "./js/categories.js";
 import { initCartListeners } from "./js/cart.js";
+import {
+    getUniqueCategories,
+    renderCategorySections,
+    organizeAndRenderProducts,
+} from "./js/categories.js";
 
 const products = await getProducts();
 
