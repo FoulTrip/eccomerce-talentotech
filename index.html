@@ -1,11 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MinimalShop</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    
+  <header class="header">
+    <h1 class="logo">🛍️ MinimalShop</h1>
+    <button id="cart-btn" class="cart-btn">🛒 <span id="cart-count">0</span></button>
+  </header>
+
+  <main class="main">
+    <section class="category">
+      <h2>Tecnología</h2>
+      <div class="carousel" id="tech-carousel"></div>
+    </section>
+
+    <section class="category">
+      <h2>Moda</h2>
+      <div class="carousel" id="fashion-carousel"></div>
+    </section>
+
+    <section class="category">
+      <h2>Hogar</h2>
+      <div class="carousel" id="home-carousel"></div>
+    </section>
+  </main>
+
+  <aside id="cart" class="cart hidden">
+    <h2>Tu Carrito</h2>
+    <ul id="cart-items"></ul>
+    <div class="cart-total">
+      <p>Total: $<span id="total">0</span></p>
+      <button id="checkout-btn">Finalizar compra</button>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
 </body>
 </html>
