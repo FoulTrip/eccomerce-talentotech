@@ -1,7 +1,3 @@
-const getProducts = async () => {
-    const response = await fetch("https://fakestoreapi.com/products");
-    const data = await response.json();
-    return data
-}
+import { fetchAPI } from "./utils.js"
 
-getProducts()
+export const getProducts = async () => await fetchAPI("https://fakestoreapi.com/products");
